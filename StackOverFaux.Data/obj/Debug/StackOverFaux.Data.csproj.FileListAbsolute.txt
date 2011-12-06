@@ -12,3 +12,10 @@ C:\_Code\StackOverFauxPG\StackOverFaux.Data\bin\Debug\StackOverFaux.Data.dll
 C:\_Code\StackOverFauxPG\StackOverFaux.Data\bin\Debug\StackOverFaux.Data.pdb
 C:\_Code\StackOverFauxPG\StackOverFaux.Data\bin\Debug\EntityFramework.dll
 C:\_Code\StackOverFauxPG\StackOverFaux.Data\bin\Debug\EntityFramework.xml
+D:\_Git\StackOverMono\StackOverFaux.Data\bin\Debug\StackOverFaux.Data.dll
+D:\_Git\StackOverMono\StackOverFaux.Data\bin\Debug\StackOverFaux.Data.pdb
+D:\_Git\StackOverMono\StackOverFaux.Data\bin\Debug\EntityFramework.dll
+D:\_Git\StackOverMono\StackOverFaux.Data\bin\Debug\EntityFramework.xml
+D:\_Git\StackOverMono\StackOverFaux.Data\obj\Debug\ResolveAssemblyReference.cache
+D:\_Git\StackOverMono\StackOverFaux.Data\obj\Debug\StackOverFaux.Data.dll
+D:\_Git\StackOverMono\StackOverFaux.Data\obj\Debug\StackOverFaux.Data.pdb

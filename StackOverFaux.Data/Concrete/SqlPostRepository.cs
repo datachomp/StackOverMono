@@ -31,7 +31,7 @@ namespace StackOverFaux.Data.Concrete
 			//The dataset isn't recent, so we get to fake some dates!
 			DateTime WhenItAllBegins = new DateTime(2011, 3, 25, 0, 0, 0);
 			dynamic table = new Post();
-			var hotposts = table.Query(@"select p.postid, p.answercount,p.viewcount,p.title,p.tags,u.userid,u.displayname,u.reputation 
+			var hotposts = table.Single(@"select p.postid, p.answercount,p.viewcount,p.title,p.tags,u.userid,u.displayname,u.reputation 
 							from posts p inner join users u on p.owneruserid = u.userid 
 							where p.posttypeid = 1 and p.creationdate >= @0
 							order by p.viewcount desc

@@ -142,7 +142,8 @@ namespace StackOverFaux.Web.Controllers
 
 			using (profiler.Step("get Tag Count"))
 			{
-				taggy = itagRepository.GetTagCount(tagname);
+				
+                taggy = itagRepository.GetTagCount(tagname);
 
 				//uncomment for the Dapper version
 				//taggy = itagRepository.GetdynPostsByTag(tagname);
