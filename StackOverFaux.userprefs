@@ -1,0 +1,34 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="StackOverFaux.Web\Web.config">
+    <Files>
+      <File FileName="StackOverFaux.Web\Web.config" Line="9" Column="64" />
+      <File FileName="c:\_Code\StackOverFaux\StackOverFaux.Web\Controllers\HomeController.cs" Line="138" Column="5" />
+      <File FileName="StackOverFaux.Web\Global.asax" Line="1" Column="1" />
+      <File FileName="StackOverFaux.Web\Global.asax.cs" Line="18" Column="10" />
+      <File FileName="StackOverFaux.Data\Abstract\ITagRepository.cs" Line="12" Column="11" />
+      <File FileName="StackOverFaux.Data\Concrete\SqlTagRepository.cs" Line="14" Column="3" />
+      <File FileName="StackOverFaux.Web\Web.Debug.config" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="StackOverFaux.Data" expanded="True">
+            <Node name="Abstract" expanded="True" />
+            <Node name="Concrete" expanded="True" />
+          </Node>
+          <Node name="StackOverFaux.Web" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Controllers" expanded="True" />
+            <Node name="Global.asax" expanded="True" />
+            <Node name="Web.config" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

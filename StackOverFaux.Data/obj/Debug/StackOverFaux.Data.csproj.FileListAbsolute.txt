@@ -1,0 +1,14 @@
+C:\_Code\StackOverFaux\StackOverFaux.Data\bin\Debug\StackOverFaux.Data.dll
+C:\_Code\StackOverFaux\StackOverFaux.Data\bin\Debug\StackOverFaux.Data.pdb
+C:\_Code\StackOverFaux\StackOverFaux.Data\bin\Debug\EntityFramework.dll
+C:\_Code\StackOverFaux\StackOverFaux.Data\bin\Debug\EntityFramework.xml
+C:\_Code\StackOverFaux\StackOverFaux.Data\obj\Debug\ResolveAssemblyReference.cache
+C:\_Code\StackOverFaux\StackOverFaux.Data\obj\Debug\StackOverFaux.Data.dll
+C:\_Code\StackOverFaux\StackOverFaux.Data\obj\Debug\StackOverFaux.Data.pdb
+C:\_Code\StackOverFauxPG\StackOverFaux.Data\obj\Debug\ResolveAssemblyReference.cache
+C:\_Code\StackOverFauxPG\StackOverFaux.Data\obj\Debug\StackOverFaux.Data.dll
+C:\_Code\StackOverFauxPG\StackOverFaux.Data\obj\Debug\StackOverFaux.Data.pdb
+C:\_Code\StackOverFauxPG\StackOverFaux.Data\bin\Debug\StackOverFaux.Data.dll
+C:\_Code\StackOverFauxPG\StackOverFaux.Data\bin\Debug\StackOverFaux.Data.pdb
+C:\_Code\StackOverFauxPG\StackOverFaux.Data\bin\Debug\EntityFramework.dll
+C:\_Code\StackOverFauxPG\StackOverFaux.Data\bin\Debug\EntityFramework.xml
