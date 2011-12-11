@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Linq;
 using StackOverFaux.Data.Abstract;
 using StackOverFaux.Data.Model;
 using System.Runtime.Caching;
-using System.Configuration;
-using Dapper;
 using System.Collections.Generic;
 
 namespace StackOverFaux.Data.Concrete

@@ -1,11 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel.DataAnnotations;
+﻿using Massive.PostgreSQL;
 
 namespace StackOverFaux.Data.Model
 {
+    public class Vote : DynamicModel
+    {
+        public Vote() : base("SoFConnStr")
+        {
+            PrimaryKeyField = "voteid";
+            TableName = "votes";
+        }
+    }
+    public class VoteType : DynamicModel
+    {
+        public VoteType() : base("SoFConnStr")
+        {
+            PrimaryKeyField = "votetypeid";
+            TableName = "votetypes";
+        }
+    }
+    /*
     public class Vote
     {
         [Key]
@@ -25,5 +38,5 @@ namespace StackOverFaux.Data.Model
         [Key]
         public int VoteTypeId { get; set; }
         public string Name { get; set; }
-    }
+    }*/
 }

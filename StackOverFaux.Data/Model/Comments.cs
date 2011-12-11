@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel.DataAnnotations;
+﻿using Massive.PostgreSQL;
 
 namespace StackOverFaux.Data.Model
 {
+
+    public class Comment : DynamicModel
+    {
+        public Comment() : base("SoFConnStr")
+        {
+            PrimaryKeyField = "commentid";
+            TableName = "comments";
+        }
+    }
+    /*
     public class Comment
     {
         [Key]
@@ -17,5 +23,5 @@ namespace StackOverFaux.Data.Model
 
         public virtual Post Post { get; set; }
         public virtual User User { get; set; }
-    }
+    }*/
 }

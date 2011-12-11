@@ -58,7 +58,6 @@
     <Compile Include="Model\Badges.cs" />
     <Compile Include="Model\Comments.cs" />
     <Compile Include="Model\Connector.cs" />
-    <Compile Include="Model\Dapper.cs" />
     <Compile Include="Model\DynoBots.cs" />
     <Compile Include="Model\Massive.cs" />
     <Compile Include="Model\Posts.cs" />
