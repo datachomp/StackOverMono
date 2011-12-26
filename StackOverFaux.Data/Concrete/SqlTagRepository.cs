@@ -19,10 +19,10 @@ namespace StackOverFaux.Data.Concrete
 		public dynamic GetTagCount(string tagname)
 		{
 			dynamic table = new Post();
-            tagname = "'" + tagname + "'";
+			tagname = "'" + tagname + "'";
 			object[] queryargs = { tagname };
-            //var tags = table.Scalar(@"select count(0) as tagcount from posts WHERE tags like '%@0%", queryargs);
-            var tags = table.Scalar(@"select count(0) as tagcount from posts WHERE to_tsvector('english',tags) @@ plainto_tsquery('english', @0)", queryargs);
+			//var tags = table.Scalar(@"select count(0) as tagcount from posts WHERE tags like '%@0%", queryargs);
+			var tags = table.Scalar(@"select count(0) as tagcount from posts WHERE to_tsvector('english',tags) @@ plainto_tsquery('english', @0)", queryargs);
 			//counter = sqlConnection.Query<int>("SELECT Count(0) as PostCount FROM dbo.Posts WHERE FREETEXT(tags, @tagname)", new { tagname = tagname }).Single();
 			return tags;
 		}

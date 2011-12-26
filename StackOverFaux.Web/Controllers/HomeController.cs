@@ -6,7 +6,8 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
-using Profiling;
+using MvcMiniProfiler;
+//using Profiling;
 using StackOverFaux.Controllers;
 using StackOverFaux.Data.Abstract;
 using StackOverFaux.Data.Model;
@@ -34,7 +35,7 @@ namespace StackOverFaux.Web.Controllers
 
 		public ActionResult Index()
 		{
-			var profiler = GetProfiler();
+			var profiler = MiniProfiler.Current;
 
 			//we load both tabs on startup so that the second tab is instant when user clicks
 			//This works great when you don't have huge record sets.
@@ -52,10 +53,16 @@ namespace StackOverFaux.Web.Controllers
 			return View();
 		}
 
+		public ActionResult TestPage()
+		{
+
+			return View();
+		}
+
 		public ActionResult Badges()
 		{
 
-			var profiler = GetProfiler();
+			var profiler = MiniProfiler.Current;
 
 			IEnumerable<dynamic> badges;
 			IEnumerable<dynamic> counts;
@@ -108,7 +115,7 @@ namespace StackOverFaux.Web.Controllers
 		{
 			IEnumerable<dynamic> taglist;
 
-			var profiler = GetProfiler();
+			var profiler = MiniProfiler.Current;
 			using (profiler.Step("get tag dropdown"))
 			{
 				taglist = itagRepository.GetTagList();
@@ -131,9 +138,9 @@ namespace StackOverFaux.Web.Controllers
 
 			IEnumerable<dynamic> taglist;
 			dynamic taggy;
-			
 
-			var profiler = GetProfiler();
+
+			var profiler = MiniProfiler.Current;
 			using (profiler.Step("get tag dropdown"))
 			{
 				//taglist = taglist = itagRepository.GetTagList(); itagRepository.GetPostsByTag(tagname);
@@ -143,7 +150,7 @@ namespace StackOverFaux.Web.Controllers
 			using (profiler.Step("get Tag Count"))
 			{
 				
-                taggy = itagRepository.GetTagCount(tagname);
+				taggy = itagRepository.GetTagCount(tagname);
 
 				//uncomment for the Dapper version
 				//taggy = itagRepository.GetdynPostsByTag(tagname);
