@@ -12,5 +12,6 @@ namespace StackOverFaux.Data.Abstract
         //IQueryable<Post> GetPostsByTag(string tagid);
 		dynamic GetTagCount(string tagname);
 		//TagCount GetdynPostsByTag(string tagname);
+        IEnumerable<dynamic> GetQuickTagList();        
     }
 }

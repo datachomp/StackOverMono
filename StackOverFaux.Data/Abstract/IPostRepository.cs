@@ -11,5 +11,6 @@ namespace StackOverFaux.Data.Abstract
 		IEnumerable<dynamic> GetRecentPosts();
 		IEnumerable<dynamic> GetHotPosts();
 		IEnumerable<dynamic> GetMostRecentPostsCache();
+        IEnumerable<dynamic> GetHotPostsCache();
 	}
 }

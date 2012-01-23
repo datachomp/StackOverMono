@@ -27,13 +27,14 @@ namespace StackOverFaux.Data.Concrete
 		{
 			//The dataset isn't recent, so we get to fake some dates!
 			DateTime WhenItAllBegins = new DateTime(2011, 3, 25, 0, 0, 0);
-			dynamic table = new Post();
-			var hotposts = table.Single(@"select p.postid, p.answercount,p.viewcount,p.title,p.tags,u.userid,u.displayname,u.reputation 
+            dynamic table = new Post();
+
+            var hotposts = table.Query(@"select p.postid, p.answercount,p.viewcount,p.title,p.tags,u.userid,u.displayname,u.reputation 
 							from posts p inner join users u on p.owneruserid = u.userid 
-							where p.posttypeid = 1 and p.creationdate >= @0
+							where p.posttypeid = 1 and p.creationdate >= '03-25-2011'
 							order by p.viewcount desc
-							limit 20", args: WhenItAllBegins);
-			
+							limit 20");
+            
 			return hotposts ;
 		}
 
@@ -67,6 +68,38 @@ namespace StackOverFaux.Data.Concrete
 				return posts;
 			}
 		}
+
+
+        public IEnumerable<dynamic> GetHotPostsCache()
+        {
+            MemoryCache cache = MemoryCache.Default;
+            string key = "hotposts";
+
+            IEnumerable<dynamic> posts;
+
+            if (!cache.Contains(key))
+            {
+                DateTime WhenItAllBegins = new DateTime(2011, 3, 25, 0, 0, 0);
+                object[] queryargs = { WhenItAllBegins.ToString() };
+                dynamic table = new Post();
+                var hotposts = table.Query(@"select p.postid, p.answercount,p.viewcount,p.title,p.tags,u.userid,u.displayname,u.reputation 
+							from posts p inner join users u on p.owneruserid = u.userid 
+							where p.posttypeid = 1 and p.creationdate >= '03-25-2011'
+							order by p.viewcount desc
+							limit 20");
+
+                CacheItemPolicy policy = new CacheItemPolicy();
+                policy.SlidingExpiration = new TimeSpan(0, 0, 0, 45, 0);
+                cache.Set(key, hotposts, policy);
+
+                return hotposts;
+            }
+            else
+            {
+                posts = cache.Get(key) as IEnumerable<dynamic>;
+                return posts;
+            }
+        }
 
 		/*
 		SoFConnStr Data = new SoFConnStr();

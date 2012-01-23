@@ -41,23 +41,62 @@ namespace StackOverFaux.Web.Controllers
 			//This works great when you don't have huge record sets.
 			using (profiler.Step("Recent Posts Call"))
 			{
-				//ViewBag.RecentPosts = ipostRepository.GetHotPosts();
-				ViewBag.RecentPosts = ipostRepository.GetMostRecentPostsCache();
+                ViewBag.RecentPosts = ipostRepository.GetRecentPosts();
+				//ViewBag.RecentPosts = ipostRepository.GetMostRecentPostsCache();
 			}
 
 			using (profiler.Step("Hottest Posts Call"))
 			{
-				ViewBag.HotPosts = ipostRepository.GetMostRecentPostsCache();
+				ViewBag.HotPosts = ipostRepository.GetHotPosts();
 			}
 
 			return View();
 		}
 
-		public ActionResult TestPage()
-		{
 
-			return View();
-		}
+        public ActionResult IndexCache()
+        {
+            var profiler = MiniProfiler.Current;
+
+            //we load both tabs on startup so that the second tab is instant when user clicks
+            //This works great when you don't have huge record sets.
+            using (profiler.Step("Recent Posts Call"))
+            {
+                //ViewBag.RecentPosts = ipostRepository.GetRecentPosts();
+                ViewBag.RecentPosts = ipostRepository.GetMostRecentPostsCache();
+            }
+
+            using (profiler.Step("Hottest Posts Call"))
+            {
+                //ViewBag.HotPosts = ipostRepository.GetHotPosts();
+                ViewBag.HotPosts = ipostRepository.GetHotPostsCache();
+            }
+
+            return View();
+        }
+
+        [OutputCache(CacheProfile = "Cache1Minute")]
+        public ActionResult IndexPageCache()
+        {
+            var profiler = MiniProfiler.Current;
+
+            //we load both tabs on startup so that the second tab is instant when user clicks
+            //This works great when you don't have huge record sets.
+            using (profiler.Step("Recent Posts Call"))
+            {
+                //ViewBag.RecentPosts = ipostRepository.GetRecentPosts();
+                ViewBag.RecentPosts = ipostRepository.GetMostRecentPostsCache();
+            }
+
+            using (profiler.Step("Hottest Posts Call"))
+            {
+                //ViewBag.HotPosts = ipostRepository.GetHotPosts();
+                ViewBag.HotPosts = ipostRepository.GetHotPostsCache();
+            }
+
+            return View();
+        }
+
 
 		public ActionResult Badges()
 		{
@@ -166,6 +205,64 @@ namespace StackOverFaux.Web.Controllers
 				return View(viewModel);
 			
 		}
+
+
+        public ActionResult QuickTags()
+        {
+            IEnumerable<dynamic> taglist;
+
+            var profiler = MiniProfiler.Current;
+            using (profiler.Step("get tag dropdown"))
+            {
+                taglist = itagRepository.GetQuickTagList();
+            }
+
+            using (profiler.Step("get Tag Count"))
+            { }
+            var viewModel = new TagSearchViewModel
+            {
+                TagList = taglist,
+                TagCount = null
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult QuickTags(FormCollection formy)
+        {
+            var tagname = formy["TagSelect"];
+
+            IEnumerable<dynamic> taglist;
+            dynamic taggy;
+
+
+            var profiler = MiniProfiler.Current;
+            using (profiler.Step("get tag dropdown"))
+            {
+                //taglist = taglist = itagRepository.GetTagList(); itagRepository.GetPostsByTag(tagname);
+                taglist = itagRepository.GetQuickTagList();
+            }
+
+            using (profiler.Step("get Tag Count"))
+            {
+
+                taggy = itagRepository.GetTagCount(tagname);
+
+                //uncomment for the Dapper version
+                //taggy = itagRepository.GetdynPostsByTag(tagname);
+            }
+
+
+            var viewModel = new TagSearchViewModel
+            {
+                TagList = taglist,
+                TagCount = taggy
+            };
+
+            return View(viewModel);
+
+        }
+
 
 	}
 }

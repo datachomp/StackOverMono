@@ -1,0 +1,29 @@
+﻿@model StackOverFaux.Web.Models.TagSearchViewModel
+@{
+	ViewBag.Title = "QuickTags";
+}
+
+<h2>Tags</h2>
+@using (Html.BeginForm())
+{
+	<select id="TagSelect" name="TagSelect">
+		@foreach (var item in Model.TagList)
+		{
+
+			if (item.tagname == "postgresql")
+			{ <option value="@item.tagname" selected="selected">@item.tagname</option> }
+			else
+			{<option value="@item.tagname">@item.tagname</option>}
+		}
+	</select>
+	<input type="submit" value="Grab Some Tag Counts"/>
+}
+
+<br /><br />
+
+@if (Model.TagCount != null)
+{
+		<p> @Model.TagCount</p>
+	
+}
+

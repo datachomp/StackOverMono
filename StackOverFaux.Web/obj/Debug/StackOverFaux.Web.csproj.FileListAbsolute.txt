@@ -59,7 +59,6 @@ C:\_Code\StackOverFauxPG\StackOverFaux.Web\obj\Debug\StackOverFaux.Web.pdb
 D:\_Git\StackOverMono\StackOverFaux.Web\bin\StackOverFaux.Web.dll
 D:\_Git\StackOverMono\StackOverFaux.Web\bin\StackOverFaux.Web.pdb
 D:\_Git\StackOverMono\StackOverFaux.Web\bin\Mono.Security.dll
-D:\_Git\StackOverMono\StackOverFaux.Web\bin\Ninject.dll
 D:\_Git\StackOverMono\StackOverFaux.Web\bin\Ninject.Web.Mvc.dll
 D:\_Git\StackOverMono\StackOverFaux.Web\bin\Npgsql.dll
 D:\_Git\StackOverMono\StackOverFaux.Web\bin\StackOverFaux.Data.dll
@@ -85,3 +84,4 @@ D:\_Git\StackOverMono\StackOverFaux.Web\bin\MvcMiniProfiler.pdb
 D:\_Git\StackOverMono\StackOverFaux.Web\bin\MvcMiniProfiler.xml
 D:\_Git\StackOverMono\StackOverFaux.Web\bin\StructureMap.pdb
 D:\_Git\StackOverMono\StackOverFaux.Web\bin\StructureMap.xml
+D:\_Git\StackOverMono\StackOverFaux.Web\bin\Elmah.dll

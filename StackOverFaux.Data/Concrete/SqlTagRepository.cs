@@ -22,10 +22,21 @@ namespace StackOverFaux.Data.Concrete
 			tagname = "'" + tagname + "'";
 			object[] queryargs = { tagname };
 			//var tags = table.Scalar(@"select count(0) as tagcount from posts WHERE tags like '%@0%", queryargs);
-			var tags = table.Scalar(@"select count(0) as tagcount from posts WHERE to_tsvector('english',tags) @@ plainto_tsquery('english', @0)", queryargs);
+			//var tags = table.Scalar(@"select count(0) as tagcount from posts WHERE to_tsvector('english',tags) @@ plainto_tsquery('english', @0)", queryargs);
+			var tags = table.Scalar(@"select count(0) as tagcount from posts WHERE tagsvector @@ plainto_tsquery('english', @0)", queryargs);
 			//counter = sqlConnection.Query<int>("SELECT Count(0) as PostCount FROM dbo.Posts WHERE FREETEXT(tags, @tagname)", new { tagname = tagname }).Single();
 			return tags;
 		}
+
+
+        public IEnumerable<dynamic> GetQuickTagList()
+        {
+
+            dynamic table = new Tag();
+            var tags = table.Query("select * from tags where tagid in (12459,16813,23701,24595,25390)");
+
+            return tags;
+        }
 
 
 		/*
