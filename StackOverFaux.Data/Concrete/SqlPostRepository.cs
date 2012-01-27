@@ -16,9 +16,6 @@ namespace StackOverFaux.Data.Concrete
 							where p.posttypeid = 1
 							order by p.creationdate desc
 							limit 20");
-
-							  //yep, making assumptions here with the post types. saving joins though!
-							  //join pt in posts.PostTypes on p.PostType.PostTypeId equals pt.PostTypeId
 			return recentposts;
 		}
 
@@ -29,11 +26,15 @@ namespace StackOverFaux.Data.Concrete
 			DateTime WhenItAllBegins = new DateTime(2011, 3, 25, 0, 0, 0);
             dynamic table = new Post();
 
-            var hotposts = table.Query(@"select p.postid, p.answercount,p.viewcount,p.title,p.tags,u.userid,u.displayname,u.reputation 
-							from posts p inner join users u on p.owneruserid = u.userid 
-							where p.posttypeid = 1 and p.creationdate >= '03-25-2011'
-							order by p.viewcount desc
-							limit 20");
+            var hotposts = table.Query(@"With hotposts as (
+	select p.postid, p.answercount,p.viewcount,p.title,p.tags, p.owneruserid
+	from posts p
+	where p.posttypeid = 1 and p.creationdate >= '03-31-2011'
+	order by p.viewcount desc
+	limit 20)
+Select post.postid, post.answercount,post.viewcount,post.title,post.tags,u.userid,u.displayname,u.reputation
+FROM hotposts as post
+inner join users u on post.owneruserid = u.userid");
             
 			return hotposts ;
 		}
@@ -48,13 +49,7 @@ namespace StackOverFaux.Data.Concrete
 
 			if (!cache.Contains(key))
 			{
-
-				dynamic table = new Post();
-				 posts = table.Query(@"select p.postid, p.answercount,p.viewcount,p.title,p.tags,u.userid,u.displayname,u.reputation 
-							from posts p inner join users u on p.owneruserid = u.userid 
-							where p.posttypeid = 1 
-							order by p.creationdate desc
-							limit 20");
+                posts = GetRecentPosts();
 
 				CacheItemPolicy policy = new CacheItemPolicy();
 				policy.SlidingExpiration = new TimeSpan(0, 0, 0, 45, 0);
@@ -79,14 +74,8 @@ namespace StackOverFaux.Data.Concrete
 
             if (!cache.Contains(key))
             {
-                DateTime WhenItAllBegins = new DateTime(2011, 3, 25, 0, 0, 0);
-                object[] queryargs = { WhenItAllBegins.ToString() };
-                dynamic table = new Post();
-                var hotposts = table.Query(@"select p.postid, p.answercount,p.viewcount,p.title,p.tags,u.userid,u.displayname,u.reputation 
-							from posts p inner join users u on p.owneruserid = u.userid 
-							where p.posttypeid = 1 and p.creationdate >= '03-25-2011'
-							order by p.viewcount desc
-							limit 20");
+
+                var hotposts = GetHotPosts();
 
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.SlidingExpiration = new TimeSpan(0, 0, 0, 45, 0);
