@@ -170,6 +170,7 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Public\css\Site.css" />
     <Content Include="Public\scripts\jquery.unobtrusive-ajax.js" />
