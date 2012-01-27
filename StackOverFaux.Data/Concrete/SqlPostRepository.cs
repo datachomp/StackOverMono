@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using StackOverFaux.Data.Abstract;
 using StackOverFaux.Data.Model;
 using System.Runtime.Caching;
