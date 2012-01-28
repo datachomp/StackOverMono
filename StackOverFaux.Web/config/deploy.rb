@@ -20,6 +20,6 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "/etc/init.d/monserve stop && /etc/init.d/monserve start"
+    #sudo "/etc/init.d/monoserve restart"
   end
 end
