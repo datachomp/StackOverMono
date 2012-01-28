@@ -17,9 +17,11 @@ set :deploy_to, "/home/rob/sites/datachomp"
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
-  task :start do ; end
+  task :start do 
+    run "touch #{File.join(current_path,'','Global.asax')}"
+  end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'','Global.asax')}"
+    
   end
 end
