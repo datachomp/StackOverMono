@@ -20,6 +20,6 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'','Web.config')}"
+    run "#{try_sudo} touch #{File.join(current_path,'','Global.asax')}"
   end
 end
