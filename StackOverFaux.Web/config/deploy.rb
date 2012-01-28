@@ -20,7 +20,7 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app,  :except => { :no_release => true } do
-    run "touch App_Code/restart.cs"
-    sudo "/etc/init.d/monoserve restart"
+    sudo "/etc/init.d/monoserve stop"
+    sudo "/etc/init.d/monoserve start"
   end
 end
