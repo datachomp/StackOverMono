@@ -19,7 +19,8 @@ role :db,  "www.stackoverfaux.com", :primary => true # This is where Rails migra
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    sudo "nginx -s reload"
+  task :restart, :roles => :app, :web,  :except => { :no_release => true } do
+    run "touch App_Code/restart.cs"
+    sudo "/etc/init.d/monoserve restart"
   end
 end
