@@ -20,6 +20,6 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    #sudo "/etc/init.d/monoserve restart"
+    sudo "nginx -s reload"
   end
 end
